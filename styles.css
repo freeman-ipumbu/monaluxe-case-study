@@ -39,7 +39,7 @@ a { color: inherit; }
 .hero-art { position: relative; height: min(72vh, 760px); margin: 0; overflow: hidden; border: 8px solid white; border-radius: 52% 48% 45% 55% / 40% 45% 55% 60%; box-shadow: 0 35px 100px rgba(54, 30, 25, .2); }
 .hero-art figcaption { position: absolute; right: 20px; bottom: 20px; left: 20px; border-radius: 99px; background: rgba(23, 17, 16, .78); padding: 14px 20px; color: white; font-size: 10px; font-weight: 700; letter-spacing: .16em; text-align: center; backdrop-filter: blur(10px); }
 
-.outcomes { display: grid; grid-template-columns: repeat(5, 1fr); border-block: 1px solid var(--line); background: #fff9f0; }
+.outcomes { display: grid; grid-template-columns: repeat(6, 1fr); border-block: 1px solid var(--line); background: #fff9f0; }
 .outcomes article { padding: 42px clamp(20px, 3vw, 50px); border-right: 1px solid var(--line); }
 .outcomes article:last-child { border-right: 0; }
 .outcomes b { display: block; font-family: "Italiana", serif; font-size: 54px; font-weight: 400; }
@@ -49,6 +49,28 @@ a { color: inherit; }
 .section h2 { font-size: clamp(48px, 6.5vw, 98px); line-height: .9; }
 .brief { display: grid; grid-template-columns: 1fr 1fr; gap: 8vw; }
 .prose { padding-top: 48px; font-size: 18px; line-height: 1.8; color: #665956; }
+
+.training-story {
+  display: grid; grid-template-columns: minmax(320px, .78fr) minmax(0, 1.22fr); gap: clamp(44px, 8vw, 120px); align-items: center;
+  position: relative; overflow: hidden;
+  background:
+    radial-gradient(circle at 88% 12%, rgba(255, 255, 255, .78), transparent 29%),
+    radial-gradient(circle at 8% 88%, rgba(166, 129, 48, .19), transparent 31%),
+    linear-gradient(135deg, #ead5d7 0%, #f6eee6 44%, #e9dccd 100%);
+}
+.training-story::before {
+  position: absolute; inset: 28px; border: 1px solid rgba(29, 21, 20, .08); border-radius: 42px; content: ""; pointer-events: none;
+}
+.training-art { position: relative; z-index: 1; margin: 0; overflow: hidden; border: 7px solid rgba(255, 255, 255, .72); border-radius: 42% 58% 51% 49% / 35% 41% 59% 65%; box-shadow: 0 38px 100px rgba(55, 31, 27, .24); }
+.training-art img { aspect-ratio: 4 / 5; }
+.training-art figcaption { position: absolute; right: 18px; bottom: 18px; left: 18px; border-radius: 99px; background: rgba(29, 21, 20, .76); padding: 13px 18px; color: white; font-size: 9px; font-weight: 700; letter-spacing: .15em; text-align: center; backdrop-filter: blur(12px); }
+.training-copy { position: relative; z-index: 1; }
+.training-copy > p:not(.eyebrow, .boundary) { max-width: 740px; font-size: 17px; line-height: 1.75; color: #665956; }
+.training-offers { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 34px; }
+.training-offers article { min-height: 174px; border: 1px solid rgba(29, 21, 20, .12); border-radius: 24px; background: rgba(255, 255, 255, .58); padding: 25px; backdrop-filter: blur(8px); }
+.training-offers b { display: block; color: var(--gold); font-family: "Italiana", serif; font-size: 31px; font-weight: 400; }
+.training-offers h3 { margin: 14px 0 7px; font-size: 13px; letter-spacing: .04em; }
+.training-offers p { margin: 0; color: #685a57; font-size: 12px; line-height: 1.55; }
 
 .gallery { display: grid; grid-template-columns: 1.15fr .85fr .85fr; grid-auto-rows: 330px; gap: 14px; background: var(--ink); }
 .gallery figure { position: relative; margin: 0; overflow: hidden; border-radius: 28px; }
@@ -131,11 +153,12 @@ footer { display: flex; align-items: center; justify-content: space-between; bac
 footer a { color: white; text-decoration: none; }
 
 @media (max-width: 900px) {
-  .hero, .brief, .circle-story, .system, .brand-system, .finale, .social-kit-head { grid-template-columns: 1fr; }
+  .hero, .brief, .training-story, .circle-story, .system, .brand-system, .finale, .social-kit-head { grid-template-columns: 1fr; }
   .hero-art { height: 620px; }
-  .outcomes { grid-template-columns: 1fr 1fr; }
-  .outcomes article:nth-child(2n) { border-right: 0; }
-  .outcomes article:last-child { grid-column: span 2; border-right: 0; }
+  .outcomes { grid-template-columns: repeat(3, 1fr); }
+  .outcomes article:nth-child(2n) { border-right: 1px solid var(--line); }
+  .outcomes article:nth-child(3n) { border-right: 0; }
+  .training-art { width: min(100%, 580px); justify-self: center; }
   .gallery { grid-template-columns: 1fr 1fr; }
   .gallery .tall { grid-row: span 1; }
   .quote { grid-column: span 2; grid-row: span 1; }
@@ -146,6 +169,7 @@ footer a { color: white; text-decoration: none; }
   .circle-art { order: -1; }
   .brand-system > img { max-width: 520px; }
   .system-card { min-height: 600px; }
+  .social-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 560px) {
@@ -156,6 +180,12 @@ footer a { color: white; text-decoration: none; }
   .hero h1 { font-size: 54px; }
   .hero-art { height: 460px; }
   .outcomes b { font-size: 40px; }
+  .outcomes { grid-template-columns: 1fr 1fr; }
+  .outcomes article:nth-child(3n) { border-right: 1px solid var(--line); }
+  .outcomes article:nth-child(2n) { border-right: 0; }
+  .training-story::before { inset: 12px; border-radius: 30px; }
+  .training-offers { grid-template-columns: 1fr; }
+  .training-offers article { min-height: 0; }
   .gallery { grid-template-columns: 1fr; }
   .gallery .quote { grid-column: auto; }
   .steps { grid-template-columns: 1fr; }
