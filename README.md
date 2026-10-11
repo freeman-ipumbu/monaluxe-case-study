@@ -2,7 +2,7 @@
 
 ![NAILED & Lashed by Mona](assets/hero.webp)
 
-A public portfolio case study by [SolarSpin Technologies](https://solarspin-namibia.pages.dev/) for the installable booking, training-enquiry, loyalty and client-operations platform created for **NAILED & Lashed by Mona**, a nail and lash business in Windhoek, Namibia.
+A public portfolio case study by [SolarSpin Technologies](https://solarspin-namibia.pages.dev/) for the installable live-availability booking, training-enquiry, loyalty and client-operations platform created for **NAILED & Lashed by Mona**, a nail and lash business in Windhoek, Namibia.
 
 ## The result
 
@@ -10,6 +10,11 @@ The project turns a visual beauty brand into a complete appointment and operatio
 
 - immersive, responsive client-work lookbook;
 - four-step booking flow with studio visits and priced house-call zones;
+- live 90-day availability with clearly labelled open, fully booked and closed dates;
+- past-date and past-time rejection, plus travel-aware house-call slots that reserve time around the service;
+- server-authoritative overlap checks that run again immediately before a booking request is stored;
+- digits-only Namibian mobile validation for prefixes 081–085 and a native calendar date picker;
+- downloadable add-to-calendar files with reminders 24 hours and 2 hours before the appointment;
 - configurable service prices, booking fees and work days;
 - cash, eWallet and bank-transfer payment tracking;
 - a separate individual-training journey for beginner gel, advanced nail art and lash-training enquiries;
@@ -20,7 +25,15 @@ The project turns a visual beauty brand into a complete appointment and operatio
 - protected owner workspace for bookings, training leads, clients and business controls;
 - installable PWA, offline fallback and motion-reduction support;
 - bounded request bodies, same-origin mutation checks, rate limiting and owner authentication;
-- deployment on Cloudflare Pages with KV-backed persistence.
+- deployment on Cloudflare Pages with KV-backed persistence. KV is eventually consistent and does not provide transactional slot locking, so every booking remains a request until Mona confirms it.
+
+## Booking integrity
+
+The appointment journey reads the live booking state for the next 90 days. Clients can distinguish dates with open slots from days that are fully booked or closed before choosing a time. The interface blocks past dates and elapsed times, while the server repeats those checks instead of trusting the browser.
+
+House calls account for the selected route on both sides of the service window, so a slot is only offered when Mona has time to travel, perform the service and return. When a request is submitted, the server rejects overlaps and rechecks the latest appointment book immediately before persistence. This server validation is authoritative for the request, but it is not described as a transactional reservation: Cloudflare KV is eventually consistent and has no multi-key transactions, and Mona’s confirmation is still the final appointment commitment.
+
+Mobile fields accept digits only and validate Namibian numbers beginning 081, 082, 083, 084 or 085. The date control uses the device’s native calendar picker. After a successful request, the client can download an `.ics` calendar entry containing display reminders 24 hours and 2 hours before the appointment.
 
 ## Experience principles
 

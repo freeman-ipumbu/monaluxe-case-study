@@ -4,16 +4,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#171110">
-  <meta name="description" content="SolarSpin Technologies case study: the installable booking, training-enquiry, loyalty and client-operations platform built for NAILED &amp; Lashed by Mona in Windhoek.">
+  <meta name="description" content="SolarSpin Technologies case study: live 90-day booking, training enquiries, loyalty and client operations for NAILED &amp; Lashed by Mona in Windhoek.">
   <link rel="canonical" href="https://freeman-ipumbu.github.io/monaluxe-case-study/">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://freeman-ipumbu.github.io/monaluxe-case-study/">
   <meta property="og:title" content="Mona Luxe — A SolarSpin Technologies Case Study">
-  <meta property="og:description" content="An installable booking, training-enquiry, loyalty and client-operations platform for NAILED &amp; Lashed by Mona in Windhoek.">
+  <meta property="og:description" content="Live 90-day booking, training enquiries, loyalty and client operations for NAILED &amp; Lashed by Mona in Windhoek.">
   <meta property="og:image" content="https://freeman-ipumbu.github.io/monaluxe-case-study/assets/monaluxe-card.webp">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Mona Luxe — A SolarSpin Technologies Case Study">
-  <meta name="twitter:description" content="Bookings, training enquiries, loyalty, client accounts and studio operations—one connected experience for NAILED &amp; Lashed by Mona.">
+  <meta name="twitter:description" content="Live availability, training enquiries, loyalty, client accounts and studio operations—one connected Mona Luxe experience.">
   <meta name="twitter:image" content="https://freeman-ipumbu.github.io/monaluxe-case-study/assets/monaluxe-card.webp">
   <title>Mona Luxe — A SolarSpin Technologies Case Study</title>
   <link rel="stylesheet" href="styles.css">
@@ -29,8 +29,8 @@
       <div class="hero-copy">
         <p class="eyebrow">NAILED &amp; Lashed by Mona · Windhoek · 2026</p>
         <h1>A beauty business,<br><em>turned into a connected client studio.</em></h1>
-        <p class="lede">An installable booking and training-enquiry experience, real-work lookbook, client reward wallet and private studio CRM—designed to turn first visits and student interest into clear, lasting relationships without losing the personality of Mona’s work.</p>
-        <div class="chips"><span>Product strategy</span><span>Identity enhancement</span><span>Training journey</span><span>Loyalty design</span><span>UX/UI</span><span>Full-stack build</span><span>Cloud launch</span></div>
+        <p class="lede">An installable live-availability booking and training-enquiry experience, real-work lookbook, client reward wallet and private studio CRM—designed to turn first visits and student interest into clear, lasting relationships without losing the personality of Mona’s work.</p>
+        <div class="chips"><span>Product strategy</span><span>Identity enhancement</span><span>Booking integrity</span><span>Training journey</span><span>Loyalty design</span><span>UX/UI</span><span>Full-stack build</span><span>Cloud launch</span></div>
       </div>
       <figure class="hero-art"><img src="assets/hero.webp" alt="Pink butterfly nail art by Mona"><figcaption>YOUR MOOD, MADE GLOSSY.</figcaption></figure>
     </section>
@@ -47,6 +47,38 @@
     <section class="brief section">
       <div><p class="eyebrow">The brief</p><h2>Luxury energy.<br>Zero booking friction.</h2></div>
       <div class="prose"><p>Mona needed more than a brochure. The business serves clients from Khomasdal and through house calls, accepts multiple payment methods, teaches individual nail sessions and grows through repeat relationships and visual trust. The experience had to make all of that feel effortless on the device clients actually use.</p><p>We built connected paths: explore real work, understand transparent starting prices, enquire about training, join Mona Luxe Circle, choose a studio visit or mobile route, request a slot, return faster, and let Mona run the business from a protected workspace.</p></div>
+    </section>
+
+    <section class="booking-proof section" aria-labelledby="booking-proof-title">
+      <div class="booking-proof-copy">
+        <p class="eyebrow">Booking integrity · live in production</p>
+        <h2 id="booking-proof-title">A request that<br><em>understands time.</em></h2>
+        <p>Availability is calculated across a rolling 90-day window for the selected service and appointment mode. Clients see which dates are open, fully booked or closed before they choose a time; past dates and elapsed times are rejected in the interface and checked again by the server.</p>
+        <div class="availability-key" aria-label="Availability state key">
+          <article class="is-open"><span>Open</span><b>Slots shown</b><p>Only times that fit the service, cleanup and route remain selectable.</p></article>
+          <article class="is-full"><span>Fully booked</span><b>No false promise</b><p>The date stays visible, but unavailable, so the next open day is easy to find.</p></article>
+          <article class="is-closed"><span>Closed</span><b>Schedule respected</b><p>Mona’s configured work days shape the calendar without manual client follow-up.</p></article>
+        </div>
+        <p class="boundary">The state cards explain the production behaviour; they are not a fabricated snapshot of Mona’s current calendar.</p>
+      </div>
+
+      <div class="booking-console" aria-label="Booking protection details">
+        <div class="booking-console-head"><span>MONA LUXE / APPOINTMENT GUARDRAILS</span><i aria-hidden="true"></i></div>
+        <div class="booking-console-grid">
+          <article><small>Window</small><b>90 days</b><p>Live service-specific availability</p></article>
+          <article><small>Date input</small><b>Native</b><p>Device calendar picker</p></article>
+          <article><small>Mobile</small><b>081–085</b><p>Digits-only Namibian validation</p></article>
+          <article><small>Calendar</small><b>24h + 2h</b><p>Two display reminders in one .ics file</p></article>
+        </div>
+        <div class="travel-window">
+          <p><span>House-call runway</span><b>Route time is protected around the service</b></p>
+          <div aria-label="Travel, service and return time"><span>Travel</span><strong>Service + cleanup</strong><span>Return</span></div>
+        </div>
+        <div class="server-check">
+          <span>SERVER-AUTHORITATIVE REQUEST CHECK</span>
+          <p>The server rejects overlapping requests and rechecks the latest appointment book immediately before storage. Cloudflare KV is eventually consistent and does not provide a transactional slot lock, so Mona’s confirmation remains the final appointment commitment.</p>
+        </div>
+      </div>
     </section>
 
     <section class="training-story section">
@@ -78,7 +110,7 @@
       <div class="steps">
         <article><span>01</span><h3>Discover</h3><p>Real photography, tactile galleries and short-form reveals establish trust quickly.</p></article>
         <article><span>02</span><h3>Join</h3><p>A simple return-client profile saves the relationship, not just the next appointment.</p></article>
-        <article><span>03</span><h3>Book</h3><p>Studio visit or house call, with service, route, timing and payment clarity.</p></article>
+        <article><span>03</span><h3>Book</h3><p>Choose from live 90-day availability for a studio visit or travel-aware house call.</p></article>
         <article><span>04</span><h3>Earn</h3><p>Completed and paid eligible appointments settle Gloss Points into the client wallet.</p></article>
         <article><span>05</span><h3>Return</h3><p>Book again, follow tier progress, redeem a reward and share a referral code.</p></article>
         <article><span>06</span><h3>Operate</h3><p>Mona manages bookings, training leads, clients, payments, rewards and business signals privately.</p></article>
@@ -103,8 +135,8 @@
     </section>
 
     <section class="system section">
-      <div class="system-card dark"><p class="eyebrow">The studio behind the studio</p><h2>One desk.<br>The whole relationship.</h2><p>Mona’s private workspace brings appointments, training enquiries, contact preferences, payment state, client history, loyalty balances, referral activity and business signals into one responsive operating surface.</p><ul><li>Booking pipeline and client CRM</li><li>Training-lead pipeline and course configuration</li><li>Collected and outstanding visibility</li><li>Reward ledger and referral tracking</li><li>Configurable services, travel and schedule</li><li>Responsive owner controls for mobile and desktop</li></ul></div>
-      <div class="system-card gold"><p class="eyebrow">Built to work</p><h2>Not a mockup.<br>A connected system.</h2><p>Cloudflare Pages and KV persistence support bookings, training enquiries, client accounts, rewards and live configuration. Client PIN credentials are salted and derived, sessions are opaque and protected, public requests are bounded and rate-limited, and no banking credentials are stored.</p><a href="https://monaluxe.pages.dev/" target="_blank" rel="noreferrer">Explore the live build →</a></div>
+      <div class="system-card dark"><p class="eyebrow">The studio behind the studio</p><h2>One desk.<br>The whole relationship.</h2><p>Mona’s private workspace brings appointments, training enquiries, contact preferences, payment state, client history, loyalty balances, referral activity and business signals into one responsive operating surface.</p><ul><li>Booking pipeline and client CRM</li><li>Live availability, schedule and travel controls</li><li>Training-lead pipeline and course configuration</li><li>Collected and outstanding visibility</li><li>Reward ledger and referral tracking</li><li>Responsive owner controls for mobile and desktop</li></ul></div>
+      <div class="system-card gold"><p class="eyebrow">Built to work</p><h2>Not a mockup.<br>A connected system.</h2><p>Cloudflare Pages and KV persistence support bookings, training enquiries, client accounts, rewards and live configuration. Client PIN credentials are salted and derived, sessions are opaque and protected, public requests are bounded and rate-limited, and no banking credentials are stored.</p><p class="system-boundary"><b>Persistence boundary:</b> KV does not provide transactional slot locking. Server-side overlap checks harden each request, while Mona’s confirmation remains the final appointment commitment.</p><a href="https://monaluxe.pages.dev/" target="_blank" rel="noreferrer">Explore the live build →</a></div>
     </section>
 
     <section class="brand-system section">
