@@ -2,7 +2,7 @@
 
 ![NAILED & Lashed by Mona](assets/hero.webp)
 
-A public portfolio case study by [SolarSpin Technologies](https://freeman-ipumbu.pages.dev/) for the installable booking, training-enquiry, loyalty and client-operations platform created for **NAILED & Lashed by Mona**, a nail and lash business in Windhoek, Namibia.
+A public portfolio case study by [SolarSpin Technologies](https://solarspin-namibia.pages.dev/) for the installable booking, training-enquiry, loyalty and client-operations platform created for **NAILED & Lashed by Mona**, a nail and lash business in Windhoek, Namibia.
 
 ## The result
 
@@ -67,4 +67,4 @@ Client photography and brand assets remain the property of NAILED & Lashed by Mo
 
 ---
 
-[A Digital Experience By SolarSpin Technologies](https://freeman-ipumbu.pages.dev/)
+[A Digital Experience By SolarSpin Technologies](https://solarspin-namibia.pages.dev/)
