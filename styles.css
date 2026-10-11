@@ -61,7 +61,7 @@ a { color: inherit; }
 .booking-proof-copy, .booking-console { position: relative; z-index: 1; }
 #booking-proof-title { scroll-margin-top: 110px; }
 .booking-proof-copy > p:not(.eyebrow, .boundary) { max-width: 720px; color: #665956; font-size: 18px; line-height: 1.75; }
-.availability-key { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; margin-top: 34px; }
+.availability-key { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 9px; margin-top: 34px; }
 .availability-key article { min-height: 190px; border: 1px solid var(--line); border-radius: 22px; background: rgba(255, 255, 255, .62); padding: 22px; }
 .availability-key span { display: inline-flex; align-items: center; gap: 7px; font-size: 9px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
 .availability-key span::before { width: 7px; height: 7px; border-radius: 50%; background: currentColor; content: ""; box-shadow: 0 0 0 5px color-mix(in srgb, currentColor 13%, transparent); }
@@ -69,6 +69,7 @@ a { color: inherit; }
 .availability-key p { margin: 9px 0 0; color: #6d5d59; font-size: 11px; line-height: 1.55; }
 .availability-key .is-open span { color: #4d7a5b; }
 .availability-key .is-full span { color: #9b792e; }
+.availability-key .is-unavailable span { color: #a65855; }
 .availability-key .is-closed span { color: #897b77; }
 .booking-console { border: 1px solid rgba(255, 255, 255, .11); border-radius: 32px; background: #1d1514; padding: clamp(24px, 4vw, 42px); color: white; box-shadow: 0 34px 90px rgba(52, 27, 23, .24); }
 .booking-console-head { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255, 255, 255, .13); padding-bottom: 20px; color: #e2c274; font-size: 10px; font-weight: 700; letter-spacing: .16em; }

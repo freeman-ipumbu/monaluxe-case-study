@@ -53,10 +53,11 @@
       <div class="booking-proof-copy">
         <p class="eyebrow">Booking integrity · live in production</p>
         <h2 id="booking-proof-title">A request that<br><em>understands time.</em></h2>
-        <p>Availability is calculated across a rolling 90-day window for the selected service and appointment mode. Clients see which dates are open, fully booked or closed before they choose a time; past dates and elapsed times are rejected in the interface and checked again by the server.</p>
+        <p>Availability is calculated across a rolling 90-day window for the selected service and appointment mode. Clients see which dates are open, fully booked, closed or out of valid times before they choose a slot; past dates and travel-adjusted departure times are rejected in the interface and checked again by the server.</p>
         <div class="availability-key" aria-label="Availability state key">
           <article class="is-open"><span>Open</span><b>Slots shown</b><p>Only times that fit the service, cleanup and route remain selectable.</p></article>
-          <article class="is-full"><span>Fully booked</span><b>No false promise</b><p>The date stays visible, but unavailable, so the next open day is easy to find.</p></article>
+          <article class="is-full"><span>Fully booked</span><b>Demand, honestly</b><p>Valid intervals exist, but every one is already held by another request.</p></article>
+          <article class="is-unavailable"><span>No slots left</span><b>Time, honestly</b><p>The studio is open, but the remaining starts have passed or no longer fit.</p></article>
           <article class="is-closed"><span>Closed</span><b>Schedule respected</b><p>Mona’s configured work days shape the calendar without manual client follow-up.</p></article>
         </div>
         <p class="boundary">The state cards explain the production behaviour; they are not a fabricated snapshot of Mona’s current calendar.</p>
@@ -69,14 +70,16 @@
           <article><small>Date input</small><b>Native</b><p>Device calendar picker</p></article>
           <article><small>Mobile</small><b>081–085</b><p>Digits-only Namibian validation</p></article>
           <article><small>Calendar</small><b>24h + 2h</b><p>Two display reminders in one .ics file</p></article>
+          <article><small>House calls</small><b>Gold pin</b><p>Themed map, typed address and route notes</p></article>
+          <article><small>Concurrency</small><b>Atomic</b><p>One globally serialized interval claim</p></article>
         </div>
         <div class="travel-window">
           <p><span>House-call runway</span><b>Route time is protected around the service</b></p>
           <div aria-label="Travel, service and return time"><span>Travel</span><strong>Service + cleanup</strong><span>Return</span></div>
         </div>
         <div class="server-check">
-          <span>SERVER-AUTHORITATIVE REQUEST CHECK</span>
-          <p>The server rejects overlapping requests and rechecks the latest appointment book immediately before storage. Cloudflare KV is eventually consistent and does not provide a transactional slot lock, so Mona’s confirmation remains the final appointment commitment.</p>
+          <span>ATOMIC APPOINTMENT INTERVAL CLAIM</span>
+          <p>A private SQLite-backed Durable Object serializes every service, cleanup and travel interval before KV storage. Two overlapping requests cannot both win; Mona’s personal confirmation remains the final service commitment.</p>
         </div>
       </div>
     </section>
@@ -110,7 +113,7 @@
       <div class="steps">
         <article><span>01</span><h3>Discover</h3><p>Real photography, tactile galleries and short-form reveals establish trust quickly.</p></article>
         <article><span>02</span><h3>Join</h3><p>A simple return-client profile saves the relationship, not just the next appointment.</p></article>
-        <article><span>03</span><h3>Book</h3><p>Choose from live 90-day availability for a studio visit or travel-aware house call.</p></article>
+        <article><span>03</span><h3>Book</h3><p>Choose live availability, then add a themed map pin and directions for a house call.</p></article>
         <article><span>04</span><h3>Earn</h3><p>Completed and paid eligible appointments settle Gloss Points into the client wallet.</p></article>
         <article><span>05</span><h3>Return</h3><p>Book again, follow tier progress, redeem a reward and share a referral code.</p></article>
         <article><span>06</span><h3>Operate</h3><p>Mona manages bookings, training leads, clients, payments, rewards and business signals privately.</p></article>
@@ -136,7 +139,7 @@
 
     <section class="system section">
       <div class="system-card dark"><p class="eyebrow">The studio behind the studio</p><h2>One desk.<br>The whole relationship.</h2><p>Mona’s private workspace brings appointments, training enquiries, contact preferences, payment state, client history, loyalty balances, referral activity and business signals into one responsive operating surface.</p><ul><li>Booking pipeline and client CRM</li><li>Live availability, schedule and travel controls</li><li>Training-lead pipeline and course configuration</li><li>Collected and outstanding visibility</li><li>Reward ledger and referral tracking</li><li>Responsive owner controls for mobile and desktop</li></ul></div>
-      <div class="system-card gold"><p class="eyebrow">Built to work</p><h2>Not a mockup.<br>A connected system.</h2><p>Cloudflare Pages and KV persistence support bookings, training enquiries, client accounts, rewards and live configuration. Client PIN credentials are salted and derived, sessions are opaque and protected, public requests are bounded and rate-limited, and no banking credentials are stored.</p><p class="system-boundary"><b>Persistence boundary:</b> KV does not provide transactional slot locking. Server-side overlap checks harden each request, while Mona’s confirmation remains the final appointment commitment.</p><a href="https://monaluxe.pages.dev/" target="_blank" rel="noreferrer">Explore the live build →</a></div>
+      <div class="system-card gold"><p class="eyebrow">Built to work</p><h2>Not a mockup.<br>A connected system.</h2><p>Cloudflare Pages and KV persistence support bookings, training enquiries, client accounts, rewards and live configuration. A private SQLite-backed Durable Object owns appointment interval claims; public requests remain bounded and rate-limited, sessions stay opaque, and no banking credentials are stored.</p><p class="system-boundary"><b>Integrity boundary:</b> the lock service prevents concurrent overlap, while KV remains Mona’s operational studio record and her confirmation remains the final service commitment.</p><a href="https://monaluxe.pages.dev/" target="_blank" rel="noreferrer">Explore the live build →</a></div>
     </section>
 
     <section class="brand-system section">

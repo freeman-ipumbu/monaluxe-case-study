@@ -10,9 +10,10 @@ The project turns a visual beauty brand into a complete appointment and operatio
 
 - immersive, responsive client-work lookbook;
 - four-step booking flow with studio visits and priced house-call zones;
-- live 90-day availability with clearly labelled open, fully booked and closed dates;
-- past-date and past-time rejection, plus travel-aware house-call slots that reserve time around the service;
-- server-authoritative overlap checks that run again immediately before a booking request is stored;
+- live 90-day availability with clearly labelled open, fully booked, closed and no-valid-slots-left dates;
+- past-date rejection and travel-adjusted same-day blocking, plus house-call slots that reserve time around the service;
+- a private SQLite-backed Durable Object that atomically rejects concurrent overlapping appointment intervals;
+- a Mona-themed Windhoek map with a movable gold pin, optional device location, typed address and landmark directions;
 - digits-only Namibian mobile validation for prefixes 081–085 and a native calendar date picker;
 - downloadable add-to-calendar files with reminders 24 hours and 2 hours before the appointment;
 - configurable service prices, booking fees and work days;
@@ -25,13 +26,15 @@ The project turns a visual beauty brand into a complete appointment and operatio
 - protected owner workspace for bookings, training leads, clients and business controls;
 - installable PWA, offline fallback and motion-reduction support;
 - bounded request bodies, same-origin mutation checks, rate limiting and owner authentication;
-- deployment on Cloudflare Pages with KV-backed persistence. KV is eventually consistent and does not provide transactional slot locking, so every booking remains a request until Mona confirms it.
+- deployment on Cloudflare Pages with KV-backed operations and a private serialized booking-lock service. Mona still personally confirms every request before payment.
 
 ## Booking integrity
 
-The appointment journey reads the live booking state for the next 90 days. Clients can distinguish dates with open slots from days that are fully booked or closed before choosing a time. The interface blocks past dates and elapsed times, while the server repeats those checks instead of trusting the browser.
+The appointment journey reads the live booking state for the next 90 days. Clients can distinguish open dates, genuinely fully booked days, configured closures and days whose valid times have already passed or no longer fit. The interface blocks past dates and elapsed times, while the server repeats those checks instead of trusting the browser.
 
-House calls account for the selected route on both sides of the service window, so a slot is only offered when Mona has time to travel, perform the service and return. When a request is submitted, the server rejects overlaps and rechecks the latest appointment book immediately before persistence. This server validation is authoritative for the request, but it is not described as a transactional reservation: Cloudflare KV is eventually consistent and has no multi-key transactions, and Mona’s confirmation is still the final appointment commitment.
+House calls account for the selected route on both sides of the service window, so a slot is only offered when Mona has time to depart, perform the service and return. Clients can keep the required written address, optionally drop a movable gold pin on the themed Windhoek map, and add gate, landmark or route directions. The pin and notes appear in StudioDesk and the client’s calendar copy.
+
+Before the request is written to KV, a private SQLite-backed Durable Object atomically claims the entire appointment interval. That globally serialized check prevents two simultaneous or differently timed overlapping requests from both succeeding. Cancelling or refund-cancelling releases the claim. Mona’s confirmation remains the final service commitment, but slot concurrency is no longer delegated to eventual KV reads.
 
 Mobile fields accept digits only and validate Namibian numbers beginning 081, 082, 083, 084 or 085. The date control uses the device’s native calendar picker. After a successful request, the client can download an `.ics` calendar entry containing display reminders 24 hours and 2 hours before the appointment.
 
