@@ -2,7 +2,7 @@
 
 ![NAILED & Lashed by Mona](assets/hero.webp)
 
-A public portfolio case study by [SolarSpin Technologies](https://solarspin-namibia.pages.dev/) for the installable live-availability booking, training-enquiry, loyalty and client-operations platform created for **NAILED & Lashed by Mona**, a nail and lash business in Windhoek, Namibia.
+A public portfolio case study by [SolarSpin Technologies](https://www.solarspin-namibia.xyz/) for the installable live-availability booking, training-enquiry, loyalty and client-operations platform created for **NAILED & Lashed by Mona**, a nail and lash business in Windhoek, Namibia.
 
 ## The result
 
@@ -46,6 +46,12 @@ Mobile fields accept digits only and validate Namibian numbers beginning 081, 08
 4. **Owner-friendly operations.** Mona can change pricing, schedule and payment state without editing code.
 5. **Mobile is the main stage.** Thumb-friendly controls, persistent booking access and carefully managed safe areas make the journey natural on a phone.
 
+## The system in motion
+
+| Mona Luxe Circle | Training journey | Client identity card |
+| --- | --- | --- |
+| ![Mona Luxe Circle loyalty experience](assets/social-circle.webp) | ![NAILED and Lashed by Mona training journey](assets/training-editorial.webp) | ![Mona Luxe client identity card](assets/monaluxe-card.webp) |
+
 ## Training journey
 
 Training is intentionally separated from appointment booking. A student chooses a published course path, selects WhatsApp, phone or email as the preferred reply channel, accepts the enquiry privacy notice and receives a dedicated reference. Mona then confirms availability, format, location and any payment step directly.
@@ -83,4 +89,4 @@ Client photography and brand assets remain the property of NAILED & Lashed by Mo
 
 ---
 
-[A Digital Experience By SolarSpin Technologies](https://solarspin-namibia.pages.dev/)
+[A Digital Experience by SolarSpin Technologies](https://www.solarspin-namibia.xyz/)
